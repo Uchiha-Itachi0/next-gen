@@ -9,7 +9,10 @@ module.exports = {
         'primary-dark-gray': '#121212E5',
         'button-hover-color': '#FFB606',
 
-      }
+      },
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      },
     },
   },
   variants: {
