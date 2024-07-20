@@ -1,5 +1,5 @@
 import React from 'react';
-import SpiritualImage from '../assets/images/Spiritual-And-Science.png';
+// import SpiritualImage from '../assets/images/Spiritual-And-Science.png';
 import {VISION_TEXT} from "../utils/Text";
 
 const About: React.FC = () => {
