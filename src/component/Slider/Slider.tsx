@@ -1,22 +1,8 @@
 import React, { useState } from 'react';
+import { SLIDER_STEPS } from "../../utils/Text";
 import { FaArrowRight } from "react-icons/fa";
-import IASImage from '../../assets/images/1-IAS.png';
-import IPSImage from '../../assets/images/2-IPS.png';
-import MilitaryImage from '../../assets/images/3-MILITARY.png';
-import DoctorImage from '../../assets/images/4-DOCTOR.png';
-import EngineerImage from '../../assets/images/5-ENGINEER.png';
-import ScientistImage from '../../assets/images/6-SCIENTIST.png';
-import DataScientistImage from '../../assets/images/7-DATA_SCIENTIST.png';
 
-const steps = [
-    { id: 1, imageUrl: IASImage },
-    { id: 2, imageUrl: IPSImage },
-    { id: 3, imageUrl: MilitaryImage },
-    { id: 4, imageUrl: DoctorImage },
-    { id: 5, imageUrl: EngineerImage },
-    { id: 6, imageUrl: ScientistImage },
-    { id: 7, imageUrl: DataScientistImage },
-];
+const steps = SLIDER_STEPS;
 
 const Slider: React.FC = () => {
     const [currentStep, setCurrentStep] = useState<number>(0);
@@ -34,27 +20,36 @@ const Slider: React.FC = () => {
     };
 
     return (
-        <div className="relative w-full h-screen">
-            <div
-                className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed"
-                style={{ backgroundImage: `url(${steps[currentStep].imageUrl})` }}
-            ></div>
-            <div className="relative z-10 flex flex-col items-center justify-center h-full py-8">
-                <div className="flex justify-between items-center w-full px-8">
+        <div className="min-h-screen bg-primary-light-blue p-4 flex flex-col justify-center items-center text-white">
+            <div className="w-full h-full flex flex-col-reverse sm:flex-row items-center justify-center gap-4">
+                <div className="absolute z-10 sm:relative sm:w-1/2 px-4 mb-4">
+                    <h2 className="text-[7vw] sm:text-[3vw] md:text-[4.5vw] xl:text-[4vw] font-semibold leading-[10vw] sm:leading-[4.5vw] md:leading-[4.8vw] xl:leading-[4.3vw] text-center sm:text-left">{steps[currentStep].title}</h2>
+                </div>
+                <div className="relative w-full sm:w-[40vw] flex justify-center items-center">
+                    <div className="block sm:hidden absolute inset-0 bg-black opacity-40"></div>
+                    <img
+                        src={steps[currentStep].image}
+                        alt="Spiritual and Science"
+                        className="object-cover"
+                    />
+                </div>
+                <div className="absolute z-20 top-1/2 left-0 transform -translate-y-1/2 lg:translate-x-0 lg:-translate-y-1/2">
                     <button
                         onClick={handlePrev}
-                        className="absolute top-0 bottom-0 left-0 px-6 py-2 bg-primary-light-gray text-white rounded-md hover:bg-primary-dark-blue"
+                        className="px-4 py-2 bg-primary-light-gray text-white rounded-md hover:bg-primary-dark-blue"
                     >
                         <FaArrowRight className="transform rotate-180" />
                     </button>
+                </div>
+                <div className="absolute z-20 top-1/2 right-0 transform -translate-y-1/2 lg:translate-x-0 lg:-translate-y-1/2">
                     <button
                         onClick={handleNext}
-                        className="absolute top-0 bottom-0 right-0 px-6 py-2 bg-primary-light-gray text-white rounded-md hover:bg-primary-dark-blue"
+                        className="px-4 py-2 bg-primary-light-gray text-white rounded-md hover:bg-primary-dark-blue"
                     >
                         <FaArrowRight />
                     </button>
                 </div>
-                <div className="absolute bottom-6 flex justify-center space-x-2">
+                <div className="absolute z-[100] bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center space-x-2">
                     {steps.map((step, index) => (
                         <div
                             key={step.id}
